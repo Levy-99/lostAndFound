@@ -178,6 +178,9 @@ Page({
 
     var place;
     (self.data.select == 1) ? place = e.detail.value.input_place.replace(/[\-\_\|\~\`\#\%\^\&\*\{\}\;\"\?]/g, '') : place= ""
+
+    var paths;
+    (result.length > 0) ? paths = result : paths = ((self.data.select == 1) ? ['cloud://zly-8af2f7.7a6c-zly-8af2f7/ava.png'] : ['cloud://zly-8af2f7.7a6c-zly-8af2f7/lost.png'])
    
    
     db.collection('posts').add({  
@@ -189,10 +192,9 @@ Page({
         input_phone: e.detail.value.input_phone,
         input_qq: e.detail.value.input_qq,
         lostorfound: this.data.select,
-        filepath: result,
+        filepath: paths,
         datedetail:date,
-        date:time,
-        openid: app.globalData.openid
+        date:time
       },
       success(res) {
         

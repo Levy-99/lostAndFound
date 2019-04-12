@@ -114,8 +114,7 @@ Page({
             lostorfound:this.data.select,
             filepath: result,
             datedetail: date,
-            date: time,
-            openid: self.data.openid
+            date: time
           },
           success(res) {
             console.log(res.data)

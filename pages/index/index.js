@@ -43,7 +43,7 @@ Page({
   detailTap: function (e) {
     var detail = e.currentTarget.dataset.anchorobj
     console.log(detail)
-    if (detail.ifidcard == 1 || detail.img[0] == "/images/ava.png" || detail.img[0] == "/images/lost.png") {
+    if (detail.generalsubmit == 0 || detail.filepath[0] == "cloud://zly-8af2f7.7a6c-zly-8af2f7/ava.png" || detail.filepath[0] == "cloud://zly-8af2f7.7a6c-zly-8af2f7/lost.png") {
       detail.display = false
     } else {
       detail.display = true

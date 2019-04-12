@@ -77,9 +77,32 @@ Page({
       })
     } else {
       var openid = ""
+      var timestamp = Date.parse(new Date());
+      timestamp = timestamp / 1000;
+      console.log("当前时间戳为：" + timestamp);
+      //获取当前时间  
+      var n = timestamp * 1000;
+      var date = new Date(n);
+      //年  
+      var Y = date.getFullYear();
+      //月  
+      var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);
+      //日  
+      var D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+      //时  
+      var h = date.getHours() < 10 ? '0' + date.getHours() : date.getHours();
+      //分  
+      var m = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
+      //秒  
+      var s = date.getSeconds();
+
+      var time = h.toString() + ":" + m.toString();
+
+      var result;
+
+      (self.data.select == 1) ? result = ['cloud://zly-8af2f7.7a6c-zly-8af2f7/ava.png'] : result = ['cloud://zly-8af2f7.7a6c-zly-8af2f7/lost.png']
       
         db.collection('posts').add({  
-          //url: 'https://www.kashingliu.cn/wechattest/insert_stuff.php',
           data: {
             generalsubmit: 0,
             stuff_name: e.detail.value.cardname.replace(/[\?]/g, '？'),
@@ -89,6 +112,9 @@ Page({
             input_qq: e.detail.value.input_qq,
             input_place: e.detail.value.input_place.replace(/[\-\_\|\~\`\#\%\^\&\*\{\}\:\;\"\?]/g, ''),
             lostorfound:this.data.select,
+            filepath: result,
+            datedetail: date,
+            date: time,
             openid: self.data.openid
           },
           success(res) {

@@ -28,9 +28,21 @@ Page({
               console.log(res.data)
             }
           })
-          wx.navigateTo({
-            url: '/pages/my_stuff/my_stuff'
+          wx.showLoading({
+            title: '加载中',
+            success(res) {
+              self.setData({
+                hide: false
+              })
+            }
           })
+          setTimeout(function () {
+            self.onLoad()
+            wx.hideLoading()
+            self.setData({
+              hide: true
+            })
+          }, 1500)
         } else if (res.cancel) {
         }
       }
@@ -52,36 +64,21 @@ Page({
               console.log(res.data)
             }
           })
-          wx.navigateTo({
-            url: '/pages/my_stuff/my_stuff'
+          wx.showLoading({
+            title: '加载中',
+            success(res) {
+              self.setData({
+                hide: false
+              })
+            }
           })
-          // wx.showLoading({
-          //   title: '加载中',
-          //   success(res) {
-          //     self.setData({
-          //       hide: false
-          //     })
-          //   }
-          // })
-          // setTimeout(function () {
-          //   db.collection('posts').where({
-          //     _openid: getApp().globalData.openid,
-          //   })
-          //     .get({
-          //       success(res) {
-          //         console.log(getApp().globalData.openid)
-          //         console.log(res.data)
-          //         self.setData({
-          //           currentList: res.data,
-          //         })
-          //         wx.hideLoading()
-          //         self.setData({
-          //           hide: true
-          //         })
-          //       }
-
-          //     })
-          // },1500)
+          setTimeout(function(){
+            self.onLoad()
+            wx.hideLoading()
+                  self.setData({
+                    hide: true
+                  })},1500)
+          
         } else if (res.cancel) {
         }
       }

@@ -77,71 +77,7 @@ Page({
       })
     } else {
       var openid = ""
-      if (getApp().globalData.openid == "" || this.data.openid == "") {
-        wx.login({
-          success: res => {
-            // 获取到用户的 code 之后：res.code
-            console.log("用户的code:" + res.code);
-            wx.request({
-              // 自行补上自己的 APPID 和 SECRET
-              url: 'https://www.kashingliu.cn/wechattest/get_userinfo.php?code=' + res.code,
-              success: res => {
-                console.log(res)      //ok
-                getApp().globalData.openid = res.data.openid
-                openid = res.data.openid
-                self.setData({
-                  openid: res.data.openid
-                })
-                db.collection('posts').add({  
-                  //url: 'https://www.kashingliu.cn/wechattest/insert_stuff.php',
-                  data: {
-                    generalsubmit: 0,
-                    stuff_name: e.detail.value.cardname.replace(/[\?]/g, '？'),
-                    detail: this.data.major[this.data.majorIndex],
-                    card_number: e.detail.value.cardid,
-                    input_phone: e.detail.value.input_phone,
-                    input_qq: e.detail.value.input_qq,
-                    input_place: e.detail.value.input_place.replace(/[\-\_\|\~\`\#\%\^\&\*\{\}\:\;\"\?]/g, ''),
-                    lostorfound: this.data.select,
-                    openid: self.data.openid
-                  },
-                  header: {
-                    'content-type': 'application/json' // 默认值
-                  },
-                  success(res) {
-                    console.log(res.data)
-                    console.log(e.detail.value)
-                    var contacts = {};
-                    contacts.qq = e.detail.value.input_qq;
-                    contacts.phone = e.detail.value.input_phone;
-                    contacts.place = e.detail.value.input_place.replace(/[\-\_\,\!\|\~\`\(\)\#\$\%\^\&\*\{\}\:\;\"\L\<\>\?]/g, '');
-                    contacts.detail = "学号：" + e.detail.value.cardid + " 、院系：" + self.data.major[self.data.majorIndex];
-                    console.log(contacts);
-                    var detail = {};
-                    //detail.id = res.data.id;
-                    detail.name = e.detail.value.cardname.replace(/[\?]/g, '？') + "学号：" + e.detail.value.cardid + "的学生卡";
-                    //detail.time = res.data.time;
-                    (self.data.select == 1) ? detail.type = "失物招领" : detail.type = "寻物启事";
-                    detail.type == "失物招领" ? detail.img = ["/images/ava.png"] : detail.img = ["/images/lost.png"]
-
-                    console.log(detail);
-                    var put = {}
-                    put.detail = detail
-                    put.contacts = contacts
-                    put.display = false
-                    let str = JSON.stringify(put)
-                    //TO DO
-                    wx.navigateTo({
-                      url: '/pages/show/show?check=1&put=' + str,
-                    })
-                    //TO DO
-                  }
-                })
-              }
-            })
-          }
-        })
-      } else {
+      
         db.collection('posts').add({  
           //url: 'https://www.kashingliu.cn/wechattest/insert_stuff.php',
           data: {
@@ -184,7 +120,7 @@ Page({
             //TO DO
           }
         })
-      }
+      
       
       console.log(e)
     }

@@ -6,7 +6,6 @@
         <view class="weui-footer">
             <view class="weui-footer__text">感谢使用</view>
             <view class="weui-footer__text">首页图片来源于Freepik</view>
-            <view class="weui-footer__text">Copyright © 1998-2019 Kashingliu</view>
         </view>
 
 

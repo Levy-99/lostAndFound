@@ -267,7 +267,7 @@ Page({
    */
   onShareAppMessage: function () {
     return {
-      title: '工大威海失物招领',
+      title: '大连理工失物招领',
       path: 'pages/show/show?check=2&itemid=' + this.data.itemid,
       success: function (res) {
         // 转发成功

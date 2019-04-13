@@ -110,7 +110,9 @@ Page({
               contacts:tempcon,
               detail:tempdet,
             });
+
             if (res.data[0].input_place == "") {
+
               self.setData({
                 haslocation: false,
                 hasborder: "1rpx solid #e5e5e5;"

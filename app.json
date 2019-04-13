@@ -6,7 +6,6 @@
     "pages/show/show",
     "pages/canvas/canvas",
     "pages/savePhoto/savePhoto",
-    "pages/stuverify/stuverify",
     "pages/user/user",
     "pages/filter/filter",
     "pages/create/create",

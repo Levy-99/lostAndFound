@@ -15,6 +15,8 @@ Page({
       { name: 'find', value: '招领', checked: 'true' },
       { name: 'lost', value: '寻物' },
     ],
+    disable: false,
+    op: .9
   },
   bindMajorChange: function (e) {
     console.log('picker country 发生选择改变，携带值为', this.data.major[e.detail.value]);
@@ -76,6 +78,10 @@ Page({
         mask: false,
       })
     } else {
+      this.setData({
+        disable: true,
+        op: .4
+      })
       var openid = ""
       var timestamp = Date.parse(new Date());
       timestamp = timestamp / 1000;

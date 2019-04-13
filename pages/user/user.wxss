@@ -19,7 +19,7 @@
 }
 
 .background {
-  background-color:#f96159;
+  background-color:#6495ED;
   width:100%;
   height:170px;
   position: relative;

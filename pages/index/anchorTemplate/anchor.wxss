@@ -27,7 +27,7 @@
 .eachitem .ava .lost {
    font-size: 28rpx;
    color: #fff;
-   background: #f96159;
+   background: #4169E1;
    position: absolute;
    bottom: 0;
    left: 0;

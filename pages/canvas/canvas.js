@@ -245,7 +245,7 @@ Page({
 
         ctx.setFontSize(17)
         ctx.setFillStyle('gray')
-        ctx.fillText(self.data.time + "发布", 20, dynamic_height - 3)
+        ctx.fillText(self.data.date + "发布", 20, dynamic_height - 3)
         dynamic_height = dynamic_height + 25
 
         ctx.moveTo(20, dynamic_height)

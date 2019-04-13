@@ -200,13 +200,13 @@ Page({
         
         console.log(e.detail.value)
         var initarray = new Array()
-        for (var i = 0; i < result.length; i++) {
-          initarray.push(result[i]);
+        for (var i = 0; i < paths.length; i++) {
+          initarray.push(paths[i]);
         }
         console.log(initarray)
         var display = true;
 
-        if (result.length == 0) {
+        if (paths.length == 0) {
           display = false
         }
         console.log(e.detail)

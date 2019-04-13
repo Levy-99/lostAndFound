@@ -23,26 +23,70 @@ Page({
       success(res) {
         if (res.confirm) {
           var id = e.currentTarget.dataset.id
-          db.collection('posts').doc(id).remove({
+          console.log(id)
+          //console.log(e.currentTarget.dataset.id)
+          db.collection('posts').doc(id).get({
             success(res) {
               console.log(res.data)
+              var path = res.data.filepath
+              if (path != "cloud://zly-8af2f7.7a6c-zly-8af2f7/lost.png" && path != "cloud://zly-8af2f7.7a6c-zly-8af2f7/ava.png") {
+                console.log('not')
+                console.log(path)
+                wx.cloud.deleteFile({
+                  fileList: [path[0]],
+                  success: res => {
+                    // handle success
+                    console.log(res.fileList)
+                  },
+                  fail: console.error
+                })
+                db.collection('posts').doc(id).remove({
+                  success(res) {
+                    console.log(res.data)
+                  }
+                })
+                wx.showLoading({
+                  title: '加载中',
+                  success(res) {
+                    self.setData({
+                      hide: false
+                    })
+                  }
+                })
+                setTimeout(function () {
+                  self.onLoad()
+                  wx.hideLoading()
+                  self.setData({
+                    hide: true
+                  })
+                }, 1500)
+              }
+              else {
+                console.log('yes')
+                console.log(path)
+                db.collection('posts').doc(id).remove({
+                  success(res) {
+                    console.log(res.data)
+                  }
+                })
+                wx.showLoading({
+                  title: '加载中',
+                  success(res) {
+                    self.setData({
+                      hide: false
+                    })
+                  }
+                })
+                setTimeout(function () {
+                  self.onLoad()
+                  wx.hideLoading()
+                  self.setData({
+                    hide: true
+                  })
+                }, 1500)
+              }
             }
           })
-          wx.showLoading({
-            title: '加载中',
-            success(res) {
-              self.setData({
-                hide: false
-              })
-            }
-          })
-          setTimeout(function () {
-            self.onLoad()
-            wx.hideLoading()
-            self.setData({
-              hide: true
-            })
-          }, 1500)
         } else if (res.cancel) {
         }
       }
@@ -58,26 +102,72 @@ Page({
       success(res) {
         if (res.confirm) {
           var id = e.currentTarget.dataset.id
-          console.log(e.currentTarget.dataset.id)
-          db.collection('posts').doc(id).remove({
+          console.log(id)
+          //console.log(e.currentTarget.dataset.id)
+          db.collection('posts').doc(id).get({
             success(res) {
               console.log(res.data)
-            }
-          })
-          wx.showLoading({
-            title: '加载中',
-            success(res) {
-              self.setData({
-                hide: false
-              })
-            }
-          })
-          setTimeout(function(){
-            self.onLoad()
-            wx.hideLoading()
+              var path=res.data.filepath
+              if (path != "cloud://zly-8af2f7.7a6c-zly-8af2f7/lost.png" && path != "cloud://zly-8af2f7.7a6c-zly-8af2f7/ava.png")  
+              {
+                console.log('not')
+                console.log(path)
+                wx.cloud.deleteFile({
+                  fileList: [path[0]],
+                  success: res => {
+                    // handle success
+                    console.log(res.fileList)
+                  },
+                  fail: console.error
+                })
+                db.collection('posts').doc(id).remove({
+                  success(res) {
+                    console.log(res.data)
+                  }
+                })
+                wx.showLoading({
+                  title: '加载中',
+                  success(res) {
+                    self.setData({
+                      hide: false
+                    })
+                  }
+                })
+                setTimeout(function () {
+                  self.onLoad()
+                  wx.hideLoading()
                   self.setData({
                     hide: true
-                  })},1500)
+                  })
+                }, 1500)
+              }
+              else
+              {
+                console.log('yes')
+                console.log(path)
+                db.collection('posts').doc(id).remove({
+                  success(res) {
+                    console.log(res.data)
+                  }
+                })
+                wx.showLoading({
+                  title: '加载中',
+                  success(res) {
+                    self.setData({
+                      hide: false
+                    })
+                  }
+                })
+                setTimeout(function () {
+                  self.onLoad()
+                  wx.hideLoading()
+                  self.setData({
+                    hide: true
+                  })
+                }, 1500)
+              }
+            }
+          })
           
         } else if (res.cancel) {
         }

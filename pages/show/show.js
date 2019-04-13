@@ -102,6 +102,7 @@ Page({
             tempcon['place'] = res.data[0].input_place,
             tempcon['phone'] = res.data[0].input_phone,
             tempcon['qq'] = res.data[0].input_qq
+            tempcon['detail'] = res.data[0].detail
             var tempdet = {}
             tempdet['name'] = res.data[0].stuff_name
             tempdet['img'] = res.data[0].filepath
@@ -109,19 +110,18 @@ Page({
               contacts:tempcon,
               detail:tempdet,
             });
-            console(contacts)
-            if (contacts.place == "") {
+            if (res.data[0].input_place == "") {
               self.setData({
                 haslocation: false,
                 hasborder: "1rpx solid #e5e5e5;"
               })
             }
-            if (contacts.qq == "") {
+            if (res.data[0].input_qq == "") {
               self.setData({
                 hasqq: false
               })
             }
-            if (contacts.phone == "") {
+            if (res.data[0].input_phone == "") {
               self.setData({
                 hasphone: false
               })

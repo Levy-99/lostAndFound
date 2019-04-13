@@ -160,7 +160,7 @@ Page({
         })
       }
     })
-    db.collection('posts').where({
+    db.collection('posts').orderBy("datedetail","desc").where({
       _openid: getApp().globalData.openid,
     })
       .get({

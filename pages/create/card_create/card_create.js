@@ -114,8 +114,7 @@ Page({
             lostorfound:this.data.select,
             filepath: result,
             datedetail: date,
-            date: time,
-            openid: self.data.openid
+            date: time
           },
           success(res) {
             console.log(res.data)
@@ -127,12 +126,11 @@ Page({
             contacts.detail = "学号：" + e.detail.value.cardid + " 、院系：" + self.data.major[self.data.majorIndex];
             console.log(contacts);
             var detail = {};
-            //detail.id = res.data.id;
+            detail.id = res._id;
             detail.name = e.detail.value.cardname.replace(/[\?]/g, '？');
             //detail.time = res.data.time;
             (self.data.select == 1) ? detail.type = "失物招领" : detail.type = "寻物启事";
-            detail.type == "失物招领" ? detail.img = ["/images/ava.png"] : detail.img = ["/images/lost.png"]
-
+            detail.type == "失物招领" ? detail.img = ["cloud://zly-8af2f7.7a6c-zly-8af2f7/ava.png"] : detail.img = ["cloud://zly-8af2f7.7a6c-zly-8af2f7/lost.png"]
             console.log(detail);
             var put = {}
             put.detail = detail

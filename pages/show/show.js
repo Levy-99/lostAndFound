@@ -1,4 +1,6 @@
 // pages/show/show.js
+wx.cloud.init()
+const db = wx.cloud.database()
 Page({
 
   /**
@@ -86,23 +88,24 @@ Page({
         let obj = JSON.parse(options.obj)
         console.log(obj);
         this.setData({
-          itemid: obj.id,
+          itemid: obj._id,
           detail: obj,
           display: obj.display
         });
         let self = this;
-        wx.request({
-          url: 'https://www.kashingliu.cn/wechattest/show_detail.php',
-          data: {
-            id: obj.id
-          },
-          header: {
-            'content-type': 'application/json' // 默认值
-          },
+      db.collection('posts').where({
+        _id: obj._id
+      }).get({
           success(res) {
+            console.log(res.data)
             console.log(res)
+            var temp = {}
+            temp['place'] = res.data.input_place,
+            temp['phone'] = res.data.input_phone,
+            temp['qq'] = res.data.input_qq
             self.setData({
-              contacts: res.data
+              tempcon:res.data,
+              contacts:temp,
             });
             if (res.data.place == "null") {
               self.setData({
@@ -267,7 +270,7 @@ Page({
    */
   onShareAppMessage: function () {
     return {
-      title: '工大威海失物招领',
+      title: '大连理工失物招领',
       path: 'pages/show/show?check=2&itemid=' + this.data.itemid,
       success: function (res) {
         // 转发成功

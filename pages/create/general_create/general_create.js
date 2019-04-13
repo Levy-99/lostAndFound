@@ -178,6 +178,9 @@ Page({
 
     var place;
     (self.data.select == 1) ? place = e.detail.value.input_place.replace(/[\-\_\|\~\`\#\%\^\&\*\{\}\;\"\?]/g, '') : place= ""
+
+    var paths;
+    (result.length > 0) ? paths = result : paths = ((self.data.select == 1) ? ['cloud://zly-8af2f7.7a6c-zly-8af2f7/ava.png'] : ['cloud://zly-8af2f7.7a6c-zly-8af2f7/lost.png'])
    
    
     db.collection('posts').add({  
@@ -189,10 +192,9 @@ Page({
         input_phone: e.detail.value.input_phone,
         input_qq: e.detail.value.input_qq,
         lostorfound: this.data.select,
-        filepath: result,
+        filepath: paths,
         datedetail:date,
-        date:time,
-        openid: app.globalData.openid
+        date:time
       },
       success(res) {
         
@@ -211,16 +213,17 @@ Page({
         contacts.qq = e.detail.value.input_qq;
         contacts.phone = e.detail.value.input_phone;
         contacts.detail = self.data.text_area.replace(/[\-\_\!\|\~\`\(\)\#\$\%\^\&\*\{\}\:\;\"\L\<\>]/g, '');
-        console.log(contacts);
-        console.log(e.detail.value)
+        contact.place = place;
+        //console.log(contacts);
+        //console.log(e.detail.value)
         var detail = {};
         detail['id'] = res._id;
         detail['name'] = e.detail.value.stuff_name.replace(/[\?]/g, '？')
-        console.log(detail['name']);
+        //console.log(detail['name']);
         (self.data.select == 1) ? detail['type'] = "失物招领" : detail['type'] = "寻物启事";
         console.log(detail['type'])
         if (initarray.length == 0) {
-          detail['type'] == "失物招领" ? detail.img = ["/images/ava.png"] : detail.img = ["/images/lost.png"]
+          detail['type'] == "失物招领" ? detail.img = ["cloud://zly-8af2f7.7a6c-zly-8af2f7/ava.png"] : detail.img = ["cloud://zly-8af2f7.7a6c-zly-8af2f7/lost.png"]
         } else {
           detail['img'] = initarray;
         }

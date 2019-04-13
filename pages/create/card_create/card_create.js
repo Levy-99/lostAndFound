@@ -96,7 +96,7 @@ Page({
       //秒  
       var s = date.getSeconds();
 
-      var time = h.toString() + ":" + m.toString();
+      var time = M.toString() + "/" + D.toString() + " " + h.toString() + ":" + m.toString();
 
       var result;
 

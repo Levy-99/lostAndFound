@@ -174,7 +174,7 @@ Page({
     //秒  
     var s = date.getSeconds(); 
 
-    var time = h.toString()+":"+m.toString();
+    var time = M.toString()+"/"+ D.toString()+" "+ h.toString()+":"+m.toString();
 
     var place;
     (self.data.select == 1) ? place = e.detail.value.input_place.replace(/[\-\_\|\~\`\#\%\^\&\*\{\}\;\"\?]/g, '') : place= ""

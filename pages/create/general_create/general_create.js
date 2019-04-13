@@ -213,7 +213,7 @@ Page({
         contacts.qq = e.detail.value.input_qq;
         contacts.phone = e.detail.value.input_phone;
         contacts.detail = self.data.text_area.replace(/[\-\_\!\|\~\`\(\)\#\$\%\^\&\*\{\}\:\;\"\L\<\>]/g, '');
-        contacts.place = place;
+        contact.place = place;
         //console.log(contacts);
         //console.log(e.detail.value)
         var detail = {};

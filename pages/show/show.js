@@ -51,7 +51,7 @@ Page({
     var strdetail = JSON.stringify(this.data.detail)
     var self = this
     wx.navigateTo({
-      url: '/pages/canvas/canvas?contacts='+strcontacts + "&detail="+strdetail,
+      url: '/pages/canvas/canvas?contacts=' + strcontacts + "&detail=" + strdetail,
       success(res) {
         self.modal.hideModal()
       }
@@ -98,27 +98,30 @@ Page({
       }).get({
           success(res) {
             console.log(res.data)
-            console.log(res)
-            var temp = {}
-            temp['place'] = res.data.input_place,
-            temp['phone'] = res.data.input_phone,
-            temp['qq'] = res.data.input_qq
+            var tempcon = {}
+            tempcon['place'] = res.data[0].input_place,
+            tempcon['phone'] = res.data[0].input_phone,
+            tempcon['qq'] = res.data[0].input_qq
+            var tempdet = {}
+            tempdet['name'] = res.data[0].stuff_name
+            tempdet['img'] = res.data[0].filepath
             self.setData({
-              tempcon:res.data,
-              contacts:temp,
+              contacts:tempcon,
+              detail:tempdet,
             });
-            if (res.data.place == "null") {
+            console(contacts)
+            if (contacts.place == "") {
               self.setData({
                 haslocation: false,
                 hasborder: "1rpx solid #e5e5e5;"
               })
             }
-            if (res.data.qq == null) {
+            if (contacts.qq == "") {
               self.setData({
                 hasqq: false
               })
             }
-            if (res.data.phone == null) {
+            if (contacts.phone == "") {
               self.setData({
                 hasphone: false
               })
@@ -202,7 +205,7 @@ Page({
       })
     }
   },
-  
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -234,7 +237,7 @@ Page({
    */
   onHide: function () {
     // if (this.modal) {
-      this.modal.hideModal()
+    this.modal.hideModal()
     // }
     console.log('hide')
   },
@@ -243,7 +246,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    if(this.data.check == 1) {
+    if (this.data.check == 1) {
       wx.navigateBack({
         delta: 2
       })

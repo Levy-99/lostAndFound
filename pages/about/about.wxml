@@ -3,6 +3,9 @@
         <view class="page__title">由ZRK,ZLY,ZMZ开发并维护</view>
     </view> -->
     <!-- <view class="page__bd page__bd_spacing"> -->
+        <!-- <view>
+        
+        <view> -->
         <view class="weui-footer">
             <view class="weui-footer__text">感谢使用</view>
             <view class="weui-footer__text">首页图片来源于zrk/zmz制作</view>

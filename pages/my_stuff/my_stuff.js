@@ -195,8 +195,8 @@ Page({
     var self = this;
     var temp2 = this.data.inputVal
     console.log(temp2)
-    db.collection('posts').where({
-
+    db.collection('posts').orderBy("datedetail","desc").where({
+      _openid: getApp().globalData.openid,
     })
       .get({
         success(res) {

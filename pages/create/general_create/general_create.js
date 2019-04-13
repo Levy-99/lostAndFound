@@ -232,7 +232,7 @@ Page({
           detail['img'] = initarray;
         }
         // console.log(detail.type)
-        // console.log(detail.filepath)
+        //console.log(detail.filepath)
         console.log(detail)
         console.log(display)
         var put = {}

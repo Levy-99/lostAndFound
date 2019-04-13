@@ -37,7 +37,7 @@ Page({
       title: '加载中',
       success(res) {
         self.setData({
-          hide: true
+          hide: truesa
         })
       }
     })

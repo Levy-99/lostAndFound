@@ -29,7 +29,7 @@ Page({
     
       if(options.time == 0){
         const _ =db.command
-        db.collection('posts').where({
+        db.collection('posts').orderBy("datedetail", "desc").where({
            datedetail: _.gte(db.serverDate({ offset: -24 * 60 * 60 * 1000 })).and(_.lte(db.serverDate({ offset: 24 * 60 * 60 * 1000 })))
          
         }).get({
@@ -55,7 +55,7 @@ Page({
        }
        else if(options.time == 1){
         const _ = db.command
-        db.collection('posts').where({
+        db.collection('posts').orderBy("datedetail", "desc").where({
           datedetail: _.gte(db.serverDate({ offset: -3*24 * 60 * 60 * 1000 })).and(_.lte(db.serverDate({ offset: 24 * 60 * 60 * 1000 })))
 
         }).get({
@@ -81,7 +81,7 @@ Page({
       }
       else if(options.time == 2){
         const _ = db.command
-        db.collection('posts').where({
+        db.collection('posts').orderBy("datedetail", "desc").where({
           datedetail: _.gte(db.serverDate({ offset: -7*24 * 60 * 60 * 1000 })).and(_.lte(db.serverDate({ offset: 24 * 60 * 60 * 1000 })))
 
         }).get({
@@ -107,7 +107,7 @@ Page({
       }
       else {
         const _ = db.command
-        db.collection('posts').where({
+        db.collection('posts').orderBy("datedetail","desc").where({
           datedetail: _.gte(db.serverDate({ offset: -30*24 * 60 * 60 * 1000 })).and(_.lte(db.serverDate({ offset: 24 * 60 * 60 * 1000 })))
 
         }).get({
@@ -140,11 +140,13 @@ Page({
 
   detailTap: function (e) {
     var detail = e.currentTarget.dataset.anchorobj
-    if (detail.ifidcard == 1 || detail.img[0] == "/images/ava.png" || detail.img[0] == "/images/lost.png") {
+    console.log(detail)
+    if (detail.generalsubmit == 0 || detail.filepath[0] == "cloud://zly-8af2f7.7a6c-zly-8af2f7/ava.png" || detail.filepath[0] == "cloud://zly-8af2f7.7a6c-zly-8af2f7/lost.png") {
       detail.display = false
     } else {
       detail.display = true
     }
+
     let str = JSON.stringify(detail)
     wx.navigateTo({
       url: '/pages/show/show?check=0&obj=' + str,

@@ -55,11 +55,13 @@ Page({
 
   detailTap: function (e) {
     var detail = e.currentTarget.dataset.anchorobj
-    if (detail.ifidcard == 1 || detail[0].img[0] == "/images/ava.png" || detail[0].img[0] == "/images/lost.png") {
+    console.log(detail)
+    if (detail.generalsubmit == 0 || detail.filepath[0] == "cloud://zly-8af2f7.7a6c-zly-8af2f7/ava.png" || detail.filepath[0] == "cloud://zly-8af2f7.7a6c-zly-8af2f7/lost.png") {
       detail.display = false
     } else {
       detail.display = true
     }
+
     let str = JSON.stringify(detail)
     wx.navigateTo({
       url: '/pages/show/show?check=0&obj=' + str,

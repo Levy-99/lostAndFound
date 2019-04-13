@@ -109,7 +109,7 @@ Page({
               contacts:tempcon,
               detail:tempdet,
             });
-            console(contacts)
+            console.log(contacts)
             if (contacts.place == "") {
               self.setData({
                 haslocation: false,

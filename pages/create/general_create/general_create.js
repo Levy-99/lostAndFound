@@ -209,17 +209,21 @@ Page({
         if (paths.length == 0) {
           display = false
         }
+        console.log(e.detail)
         var contacts = {};
         contacts.qq = e.detail.value.input_qq;
+        console.log(contacts.qq)
         contacts.phone = e.detail.value.input_phone;
+        console.log(contacts.phone)
         contacts.detail = self.data.text_area.replace(/[\-\_\!\|\~\`\(\)\#\$\%\^\&\*\{\}\:\;\"\L\<\>]/g, '');
-        contact.place = place;
-        //console.log(contacts);
-        //console.log(e.detail.value)
+        console.log(contacts.detail)
+        contacts.place = place;
+        console.log(contacts);
+        console.log(e.detail.value)
         var detail = {};
         detail['id'] = res._id;
         detail['name'] = e.detail.value.stuff_name.replace(/[\?]/g, '？')
-        //console.log(detail['name']);
+        console.log(detail['name']);
         (self.data.select == 1) ? detail['type'] = "失物招领" : detail['type'] = "寻物启事";
         console.log(detail['type'])
         if (initarray.length == 0) {

@@ -108,7 +108,8 @@
             <button 
               class="weui-btn" 
               form-type="submit"
-              style="background-color:#f96159;color:white;"
+              style="background-color:#f96159;color:white; opacity:{{op}}"
+              disabled='{{disable}}'
             >确定</button>
         </view>
     </view>

@@ -16,7 +16,9 @@ Page({
     select: true,
     text_area: '',
     returnpath: [],
-    openid: ""
+    openid: "",
+    disable:false,
+    op:.9
   },
   bindTextAreaBlur: function (e) {
     // console.log(e.detail.value)
@@ -105,6 +107,10 @@ Page({
   },
   uploadimg: function (data) {
     // console.log(data)
+    this.setData({
+      disable: true,
+      op: .4
+    })
     var e = data.e
     // var result = new Array();
     var that = this,

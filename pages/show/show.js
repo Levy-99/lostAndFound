@@ -106,6 +106,7 @@ Page({
             var tempdet = {}
             tempdet['name'] = res.data[0].stuff_name
             tempdet['img'] = res.data[0].filepath
+            tempdet['time'] = res.data[0].date
             self.setData({
               contacts:tempcon,
               detail:tempdet,

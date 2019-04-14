@@ -134,7 +134,7 @@ Page({
             var detail = {};
             detail.id = res._id;
             detail.name = e.detail.value.cardname.replace(/[\?]/g, '？');
-            //detail.time = res.data.time;
+            detail.time = time
             (self.data.select == 1) ? detail.type = "失物招领" : detail.type = "寻物启事";
             detail.type == "失物招领" ? detail.img = ["cloud://zly-8af2f7.7a6c-zly-8af2f7/ava.png"] : detail.img = ["cloud://zly-8af2f7.7a6c-zly-8af2f7/lost.png"]
             console.log(detail);

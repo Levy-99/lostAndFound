@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    major: ["未知学院","计算机科学与技术学院", "船舶与海洋工程学院", "海洋科学与技术学院", "材料科学与工程学院", "新能源学院", "土木工程学院", "汽车工程学院", "信息科学与工程学院", "经济管理学院", "理学院", "语言文学学院"],
+    major: ["未知","软件学院","国际信息与软件学院","微电子学院","计算机科学与技术学院", "水利工程学院", "材料科学与工程学院", "生物工程学院", "土木工程学院", "化工学院", "电气工程学院", "经济管理学院", "数学科学学院","其他学院"],
     majorIndex: 0,
     openid: "",
     select:true,
@@ -134,7 +134,7 @@ Page({
             var detail = {};
             detail.id = res._id;
             detail.name = e.detail.value.cardname.replace(/[\?]/g, '？');
-            //detail.time = res.data.time;
+            detail.time = time
             (self.data.select == 1) ? detail.type = "失物招领" : detail.type = "寻物启事";
             detail.type == "失物招领" ? detail.img = ["cloud://zly-8af2f7.7a6c-zly-8af2f7/ava.png"] : detail.img = ["cloud://zly-8af2f7.7a6c-zly-8af2f7/lost.png"]
             console.log(detail);

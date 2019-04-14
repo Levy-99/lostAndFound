@@ -108,7 +108,7 @@ Page({
       else {
         const _ = db.command
         db.collection('posts').orderBy("datedetail","desc").where({
-          datedetail: _.gte(db.serverDate({ offset: -30*24 * 60 * 60 * 1000 })).and(_.lte(db.serverDate({ offset: 24 * 60 * 60 * 1000 })))
+          datedetail: _.lte(db.serverDate({ offset: -7 *24* 60 * 60 * 1000 }))
 
         }).get({
           data: {

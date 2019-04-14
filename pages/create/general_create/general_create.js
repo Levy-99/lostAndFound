@@ -229,6 +229,7 @@ Page({
         var detail = {};
         detail['id'] = res._id;
         detail['name'] = e.detail.value.stuff_name.replace(/[\?]/g, '？')
+        detail['time'] = time
         console.log(detail['name']);
         (self.data.select == 1) ? detail['type'] = "失物招领" : detail['type'] = "寻物启事";
         console.log(detail['type'])

@@ -143,6 +143,18 @@ Page({
    */
   onShow: function () {
     var self = this;
+    // wx.cloud.callFunction({
+    //   // 云函数名称
+    //   name: 'getdata',
+    //   // 传给云函数的参数
+    //   data: {
+    //   },
+    //   success(res) {
+    //     console.log(res.data) // 3
+    //     currentList:res.data
+    //   },
+    //   fail: console.error
+    // })
     db.collection('posts').orderBy("datedetail","desc").get({
       success(res) {
         console.log(res.data)

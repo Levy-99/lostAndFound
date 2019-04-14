@@ -259,16 +259,16 @@ Page({
 
         ctx.setFillStyle('gray')
         ctx.setFontSize(14)
-        ctx.fillText('长按识别大连理工专属失物招领小程序', 140, dynamic_height - 105)
+        ctx.fillText('长按识别小程序开发团队微信公众号', 140, dynamic_height - 105)
         ctx.setFillStyle('gray')
         ctx.setFontSize(14)
         ctx.fillText('小程序运维开发者QQ：362809422', 140, dynamic_height - 85)
         ctx.setFillStyle('gray')
         ctx.setFontSize(14)
-        ctx.fillText('关注微信公众号：大连理工大学', 140, dynamic_height - 65)
+        ctx.fillText('关注微信公众号：TeamGoose', 140, dynamic_height - 65)
         ctx.setFillStyle('gray')
         ctx.setFontSize(14)
-        ctx.fillText('祝你快乐生活每一天', 140, dynamic_height - 45)
+        ctx.fillText('祝您校园生活愉快', 140, dynamic_height - 45)
 
         self.setData({
           height: dynamic_height + "px"

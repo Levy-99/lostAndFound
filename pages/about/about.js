@@ -28,15 +28,7 @@ Page({
   },
 
   sendformid: function (e) {
-    var put = JSON.stringify(formid)
-    console.log(put.length)
-    wx.request({
-      url: 'https://www.kashingliu.cn/wechattest/make_formid.php?content=' + put,
-      success(res) {
-        console.log(res.data)
-        formid = []
-      }
-    })
+    
   },
 
   /**

@@ -84,61 +84,7 @@ Page({
       check: options.check
     })
     console.log(this.data.check)
-    if(options.check == 0) {
-        let obj = JSON.parse(options.obj)
-        console.log(obj);
-        this.setData({
-          itemid: obj._id,
-          detail: obj,
-          display: obj.display
-        });
-        let self = this;
-      db.collection('posts').where({
-        _id: obj._id
-      }).get({
-          success(res) {
-            console.log(res.data)
-            var tempcon = {}
-            tempcon['place'] = res.data[0].input_place,
-            tempcon['phone'] = res.data[0].input_phone,
-            tempcon['qq'] = res.data[0].input_qq
-            tempcon['detail'] = res.data[0].detail
-            var tempdet = {}
-            tempdet['name'] = res.data[0].stuff_name
-            tempdet['img'] = res.data[0].filepath
-            tempdet['time'] = res.data[0].date
-            self.setData({
-              contacts:tempcon,
-              detail:tempdet,
-            });
-
-            if (res.data[0].input_place == "") {
-
-              self.setData({
-                haslocation: false,
-                hasborder: "1rpx solid #e5e5e5;"
-              })
-            }
-            if (res.data[0].input_qq == "") {
-              self.setData({
-                hasqq: false
-              })
-            }
-            if (res.data[0].input_phone == "") {
-              self.setData({
-                hasphone: false
-              })
-            }
-          }
-        })
-        if (this.data.detail.type == "寻物启事") {
-          this.setData({
-            haslocation: false,
-            hasborder: "1rpx solid #e5e5e5;"
-          })
-        }
-        console.log(this.data.display)
-    } else if (options.check == 1) {
+    if (options.check == 1) {
       console.log(options.put)
       let obj = JSON.parse(options.put)
       // if ()
@@ -163,50 +109,61 @@ Page({
           hasphone: false
         })
       }
-    } else if (options.check == 2) {
-      var self = this
-      wx.request({
-        url: 'https://www.kashingliu.cn/wechattest/show_share.php',
-        data: {
-          id: options.itemid
-        },
-        header: {
-          'content-type': 'application/json' // 默认值
-        },
+    } else{
+      let obj = JSON.parse(options.obj)
+      console.log(obj);
+      this.setData({
+        itemid: obj._id,
+        detail: obj,
+        display: obj.display
+      });
+      let self = this;
+      db.collection('posts').where({
+        _id: obj._id
+      }).get({
         success(res) {
-          console.log(res)
-          var detail = res.data.detail
-          console.log(detail[0])
-          if (detail.ifidcard == 1 || detail[0].img[0] == "/images/ava.png" || detail[0].img[0] == "/images/lost.png") {
-            detail.display = false
-          } else {
-            detail.display = true
-          }
+          console.log(res.data)
+          var tempcon = {}
+          tempcon['place'] = res.data[0].input_place,
+            tempcon['phone'] = res.data[0].input_phone,
+            tempcon['qq'] = res.data[0].input_qq
+          tempcon['detail'] = res.data[0].detail
+          var tempdet = {}
+          tempdet['name'] = res.data[0].stuff_name
+          tempdet['img'] = res.data[0].filepath
+          tempdet['time'] = res.data[0].date
           self.setData({
-            itemid: res.data.detail.id,
-            detail: detail,
-            display: detail.display,
-            contacts: res.data.contact
+            contacts: tempcon,
+            detail: tempdet,
           });
-          if (res.data.contact.place == "" || res.data.contact.place == "null" || res.data.contact.place == null) {
+
+          if (res.data[0].input_place == "") {
+
             self.setData({
               haslocation: false,
               hasborder: "1rpx solid #e5e5e5;"
             })
           }
-          if (res.data.contact.qq == null || res.data.contact.qq == "null" || res.data.contact.qq == "") {
+          if (res.data[0].input_qq == "") {
             self.setData({
               hasqq: false
             })
           }
-          if (res.data.contact.phone == null || res.data.contact.phone == "null" || res.data.contact.phone == "") {
+          if (res.data[0].input_phone == "") {
             self.setData({
               hasphone: false
             })
           }
         }
       })
-    }
+      if (this.data.detail.type == "寻物启事") {
+        this.setData({
+          haslocation: false,
+          hasborder: "1rpx solid #e5e5e5;"
+        })
+      }
+      console.log(this.data.display)
+    }  
   },
 
 

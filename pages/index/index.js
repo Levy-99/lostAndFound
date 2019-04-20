@@ -60,14 +60,18 @@ Page({
       loading: true
     })
     var self = this;
-    db.collection('posts').orderBy("datedetail", "desc").get({
+    wx.cloud.callFunction({
+      name: 'getdata',
+      data: {
+      },
       success(res) {
-        console.log(res.data)
+        console.log(res.result.data)
         self.setData({
-          currentList: res.data,
+          currentList: res.result.data,
           loading: false
         })
-      }
+      },
+      fail: console.error
     })
   },
 

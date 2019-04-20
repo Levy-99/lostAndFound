@@ -44,6 +44,16 @@
    padding: 3rpx 8rpx;
    border-radius: 0 20rpx 0 0;
 }
+.eachitem .ava .stick {
+   font-size: 28rpx;
+   color: #fff;
+   background: red;
+   position: absolute;
+   top: 0;
+   left: 0;
+   padding: 3rpx 8rpx;
+   border-radius: 0 0 20rpx 0;
+}
 .eachitem .info {
    width: 100%;
    height: 135rpx;

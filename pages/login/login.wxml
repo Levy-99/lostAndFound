@@ -6,7 +6,7 @@
         </view>
  
         <view class='content' style='text-align:center;'>
-          <view style='font-size:50rpx;'>大连理工失物招领</view>
+          <view style='font-size:50rpx;'>失物招领小助手</view>
           <view>申请获取以下权限</view>
           <text>获得你的公开信息(昵称，头像等)</text>
         </view>

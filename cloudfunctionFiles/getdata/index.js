@@ -8,7 +8,7 @@ exports.main = async (event, context) => {
   const batchTimes = Math.ceil(total / 100)
   const tasks = []
   for (let i = 0; i < batchTimes; i++) {
-    const promise = db.collection('posts').skip(i * MAX_LIMIT).limit(MAX_LIMIT).get()
+    const promise = db.collection('posts').skip(i * MAX_LIMIT).limit(MAX_LIMIT).orderBy("priority","desc").orderBy("datedetail",'desc').get()
     tasks.push(promise)
   }
   return (await Promise.all(tasks)).reduce((acc, cur) => ({

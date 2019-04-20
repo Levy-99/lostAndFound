@@ -5,7 +5,6 @@
     "pages/my_stuff/my_stuff",
     "pages/show/show",
     "pages/canvas/canvas",
-    "pages/savePhoto/savePhoto",
     "pages/user/user",
     "pages/filter/filter",
     "pages/create/create",
@@ -19,7 +18,7 @@
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#ffffff",
-    "navigationBarTitleText": "大连理工失物招领",
+    "navigationBarTitleText": "失物招领小助手",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {

@@ -200,7 +200,8 @@ Page({
         lostorfound: this.data.select,
         filepath: paths,
         datedetail:date,
-        date:time
+        date:time,
+        priority:0
       },
       success(res) {
         
